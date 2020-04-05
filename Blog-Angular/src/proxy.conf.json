@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "http://gibran.com.devel/api/",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
