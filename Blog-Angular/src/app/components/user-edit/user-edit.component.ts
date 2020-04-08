@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import {User} from '../../models/user';
 import { UserService } from '../../services/user.service';
 
+=======
+>>>>>>> 6c52579a82cab712b31115e837a857ba942c4b8e
 
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
+<<<<<<< HEAD
   styleUrls: ['./user-edit.component.css'],
   providers: [UserService]
 })
@@ -36,10 +40,18 @@ export class UserEditComponent implements OnInit {
               );
 
   }
+=======
+  styleUrls: ['./user-edit.component.css']
+})
+export class UserEditComponent implements OnInit {
+
+  constructor() { }
+>>>>>>> 6c52579a82cab712b31115e837a857ba942c4b8e
 
   ngOnInit(): void {
   }
 
+<<<<<<< HEAD
   onSubmit(form){
     this._userService.update(this.token, this.user).subscribe(
       response => {
@@ -80,4 +92,6 @@ export class UserEditComponent implements OnInit {
 
   }
 
+=======
+>>>>>>> 6c52579a82cab712b31115e837a857ba942c4b8e
 }
