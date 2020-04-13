@@ -1,18 +1,17 @@
-<<<<<<< HEAD
 
 <div class="col-md-12 mt-2">
     <h1>{{page_title}}</h1>
     <p>Modifica tus datos</p>
     <hr>
-    <!--
+    
     <div class="alert alert-success" *ngIf="status == 'success'">
-        El registro se a completado correcamente. <a [routerLink]="['/login']">Inicia sesion aqui</a>
+        Los datos se han guardado correcamente. <a [routerLink]="['/login']">Inicia sesion aqui</a>
     </div>
     
     <div class="alert alert-danger" *ngIf="status == 'error'">
-        El registro no se  completo correctamente.
+        Los datos no se han guardado.
     </div>
--->
+
     
     <!--Formulario de Ajustes-->
     <form class="col-md-5 ml-0 pl-0" #userEditForm="ngForm" (ngSubmit)="onSubmit(userEditForm)">
@@ -48,13 +47,17 @@
 
         <div class="form-group">
             <label for="description">Biografia</label>
-            <input type="text" name="description" class="form-control" #description="ngModel" 
-            [(ngModel)]="user.description">
+            <textarea [froalaEditor]  name="description" class="form-control" #description="ngModel" 
+            [(ngModel)]="user.description"></textarea>
         </div>
     
         <div class="form-group">
             <label for="image">Avatar</label>
-            <input type="file" name="image" class="form-control" >
+            <angular-file-uploader
+              [config]="afuConfig"
+              [resetUpload]=resetVar
+              (ApiResponse)="AvatarUpload($event)">>
+              </angular-file-uploader> 
         </div>
         
     
@@ -63,6 +66,4 @@
     
     
     </div>
-=======
 <p>user-edit works!</p>
->>>>>>> 6c52579a82cab712b31115e837a857ba942c4b8e

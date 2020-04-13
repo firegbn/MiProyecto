@@ -18,11 +18,8 @@ const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'logout/:sure', component: LoginComponent},
     {path: 'registro', component: RegisterComponent},
-<<<<<<< HEAD
     {path: 'ajustes', component: UserEditComponent},
-=======
-    {path: 'ajustes', component: UserEditComponent}
->>>>>>> 6c52579a82cab712b31115e837a857ba942c4b8e
+    {path: 'ajustes', component: UserEditComponent},
     // cuando no existe nombre de ruta se usa **
     {path: '**', component: ErrorComponent}
 

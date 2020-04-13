@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import {User} from '../../models/user';
 import { UserService } from '../../services/user.service';
+import {global} from '../../services/global'
 
-=======
->>>>>>> 6c52579a82cab712b31115e837a857ba942c4b8e
 
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
-<<<<<<< HEAD
   styleUrls: ['./user-edit.component.css'],
   providers: [UserService]
 })
@@ -20,6 +17,39 @@ export class UserEditComponent implements OnInit {
   public identity;
   public token;
   public status;
+  public froala_options: Object = {
+    charCounterCount: true,
+    toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+  };
+
+  public afuConfig = {
+    multiple: false,
+    formatsAllowed: ".jpg,.png,.gif,.jpeg",
+    maxSize: "50",
+    uploadAPI:  {
+      url:global.url+'user/upload',
+      headers: {
+     "Content-Type" : "text/plain;charset=UTF-8",
+     "Authorization" : this._userService.getToken()
+      }
+    },
+    theme: "attachPin",
+    hideProgressBar: false,
+    hideResetBtn: true,
+    hideSelectBtn: false,
+    replaceTexts: {
+      selectFileBtn: 'Select Files',
+      resetBtn: 'Reset',
+      uploadBtn: 'Upload',
+      dragNDropBox: 'Drag N Drop',
+      attachPinBtn: 'Sube tu Avatar...',
+      afterUploadMsg_success: 'Successfully Uploaded !',
+      afterUploadMsg_error: 'Upload Failed !'
+     }
+     };
 
   constructor(
     private _userService: UserService
@@ -40,18 +70,10 @@ export class UserEditComponent implements OnInit {
               );
 
   }
-=======
-  styleUrls: ['./user-edit.component.css']
-})
-export class UserEditComponent implements OnInit {
-
-  constructor() { }
->>>>>>> 6c52579a82cab712b31115e837a857ba942c4b8e
 
   ngOnInit(): void {
   }
 
-<<<<<<< HEAD
   onSubmit(form){
     this._userService.update(this.token, this.user).subscribe(
       response => {
@@ -61,20 +83,8 @@ export class UserEditComponent implements OnInit {
 
           // Actualizar usuario en sesion
 
-          if (response.changes.name) {
-            this.user.name = response.changes.name;
-          }
-
-          if (response.changes.surname) {
-            this.user.surname = response.changes.surname;
-          }
-
-          if (response.changes.email) {
-            this.user.email = response.changes.email;
-          }
-
-
-
+          
+         
           this.identity = this.user;
           localStorage.setItem('identity', JSON.stringify(this.identity));
 
@@ -92,6 +102,9 @@ export class UserEditComponent implements OnInit {
 
   }
 
-=======
->>>>>>> 6c52579a82cab712b31115e837a857ba942c4b8e
+  AvatarUpload(datos){
+    let data = JSON.parse(datos.response);
+    this.user.image = data.image;
+  }
+
 }
