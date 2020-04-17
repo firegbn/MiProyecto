@@ -21,9 +21,9 @@
     "@angular/router": "~9.0.7",
     "angular-file-uploader": "^5.0.2",
     "angular-froala-wysiwyg": "^3.1.0",
-    "bootstrap": "*",
+    "bootstrap": "^4.4.1",
     "froala-editor": "^3.1.1",
-    "jquery": "^3.5.0",
+    "jquery": "^3.4.1",
     "rxjs": "^6.5.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

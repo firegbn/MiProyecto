@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../models/user';
 import { UserService } from '../../services/user.service';
-import {global} from '../../services/global'
+import {global} from '../../services/global';
 
 
 @Component({
@@ -17,6 +17,7 @@ export class UserEditComponent implements OnInit {
   public identity;
   public token;
   public status;
+  public resetVar;
   public froala_options: Object = {
     charCounterCount: true,
     toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
@@ -24,15 +25,16 @@ export class UserEditComponent implements OnInit {
     toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
     toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
   };
+  public url;
+  
 
   public afuConfig = {
     multiple: false,
-    formatsAllowed: ".jpg,.png,.gif,.jpeg",
+    formatsAllowed: ".jpg, .png, .gif, .jpeg",
     maxSize: "50",
     uploadAPI:  {
       url:global.url+'user/upload',
       headers: {
-     "Content-Type" : "text/plain;charset=UTF-8",
      "Authorization" : this._userService.getToken()
       }
     },
@@ -40,16 +42,17 @@ export class UserEditComponent implements OnInit {
     hideProgressBar: false,
     hideResetBtn: true,
     hideSelectBtn: false,
+    attachPinText: 'Sube tu avatar de usuario',
     replaceTexts: {
       selectFileBtn: 'Select Files',
       resetBtn: 'Reset',
       uploadBtn: 'Upload',
       dragNDropBox: 'Drag N Drop',
-      attachPinBtn: 'Sube tu Avatar...',
+      attachPinBtn: 'Sube tu avatar...',
       afterUploadMsg_success: 'Successfully Uploaded !',
       afterUploadMsg_error: 'Upload Failed !'
-     }
-     };
+    }
+};
 
   constructor(
     private _userService: UserService
@@ -58,6 +61,7 @@ export class UserEditComponent implements OnInit {
     this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
+    this.url = global.url;
     // rellenar datos de usuario
     this.user = new User(
               this.identity.id,
